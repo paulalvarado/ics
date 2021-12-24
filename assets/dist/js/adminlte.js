@@ -2238,7 +2238,7 @@
             }
 
             var groupItemElement = $__default['default']('<a/>', {
-                href: link,
+                href: link.replace("%3A", ":"),
                 class: 'list-group-item'
             });
             var searchTitleElement = $__default['default']('<div/>', {

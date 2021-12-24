@@ -19,6 +19,9 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
+                <div class="overlay dark">
+                    <i class="fas fa-3x fa-exclamation-triangle"></i>
+                </div>
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px">%</sup></h3>
 
@@ -34,6 +37,9 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
+                <div class="overlay dark">
+                    <i class="fas fa-3x fa-exclamation-triangle"></i>
+                </div>
                 <div class="inner">
                     <h3>44</h3>
 
@@ -49,6 +55,9 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
+                <div class="overlay dark">
+                    <i class="fas fa-3x fa-exclamation-triangle"></i>
+                </div>
                 <div class="inner">
                     <h3>65</h3>
 
