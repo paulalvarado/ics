@@ -34,12 +34,21 @@ class Productos_model extends CI_Model
   {
     return $this->db->get('productos')->result();
   }
+  public function get_producto($var)
+  {
+    $this->db->where('id_producto', $var);
+    return $this->db->get('productos')->row();
+  }
 
 
   public function guardar($datos)
   {
-
-    $this->db->insert('productos', $datos);
+    if (isset($datos['id_producto']) || $datos['id_producto'] != '') {
+      $this->db->where('id_producto', $datos['id_producto']);
+      $this->db->update('productos', $datos);
+    } else {
+      $this->db->insert('productos', $datos);
+    }
     return $this->db->affected_rows();
   }
 

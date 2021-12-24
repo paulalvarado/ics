@@ -85,14 +85,54 @@ class Productos extends CI_Controller
     }
   }
 
-  public function guardar()
+  public function edit($var)
   {
-    $datos['producto']        = $_POST['name'];
+    $data['page'] = 'Productos/edit';
+    $data['titulo'] = 'Editar poducto';
+    $data['breadcrumbs'] = [
+      [
+        'name'  =>  'Inicio',
+        'url'   => base_url()
+      ], [
+        'name'    => 'Tablero',
+        'url'   => base_url('dashboard')
+      ], [
+        'name'    => 'Productos',
+        'url'   => base_url('productos')
+      ], [
+        'name'    => 'Editar producto',
+        'url'   => base_url('productos/add')
+      ]
+    ];
+    $data['btn']  = [
+      [
+        'titulo' => 'Añadir producto',
+        'id' => 'add-product',
+        'url' => base_url('productos/add')
+      ]
+    ];
+
+    $data['producto'] = $this->Productos_model->get_producto($var);
+
+    if (isset($this->session->username)) {
+      $this->load->view('Template/content', $data);
+    } else {
+      redirect(base_url('login'));
+    }
+  }
+
+  public function guardar($var)
+  {
+    $datos['producto']    = $_POST['name'];
     $datos['sku']         = $_POST['sku'];
     $datos['stock']       = $_POST['stock'];
-    $datos['stock_min']    = $_POST['stockmin'];
+    $datos['stock_min']   = $_POST['stockmin'];
     $datos['descripcion'] = $_POST['description'];
 
+    if ($var == 'edit') {
+      $datos['id_producto'] = $_POST['id_producto'];
+    }
+    
     return $this->Productos_model->guardar($datos);
   }
 }

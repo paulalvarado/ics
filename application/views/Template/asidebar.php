@@ -35,8 +35,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item <?= ($page == 'productos/add' || $page == 'productos/index') ? 'menu-open' : '' ?>"><!-- menu-open -->
-                    <a href="#" class="nav-link <?= ($page == 'productos/add' || $page == 'productos/index') ? 'active' : '' ?>"><!-- active -->
+                <li class="nav-item <?= ($page == 'Productos/add' || $page == 'Productos/index') ? 'menu-open' : '' ?>"><!-- menu-open -->
+                    <a href="#" class="nav-link <?= ($page == 'Productos/add' || $page == 'Productos/index') ? 'active' : '' ?>"><!-- active -->
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
                             Productos
@@ -45,13 +45,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('productos') ?>" class="nav-link <?= ($page == 'productos/index') ? 'active' : '' ?>"><!-- active -->
+                            <a href="<?= base_url('productos') ?>" class="nav-link <?= ($page == 'Productos/index') ? 'active' : '' ?>"><!-- active -->
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Todos los productos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('productos/add') ?>" class="nav-link <?= ($page == 'productos/add') ? 'active' : '' ?>">
+                            <a href="<?= base_url('productos/add') ?>" class="nav-link <?= ($page == 'Productos/add') ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Añadir producto</p>
                             </a>

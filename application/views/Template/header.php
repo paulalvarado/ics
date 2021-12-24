@@ -86,12 +86,12 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <!-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="index3.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>
+                </li> -->
             </ul>
 
             <!-- Right navbar links -->
@@ -107,11 +107,11 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="#" role="button" id="logout">
                         <i class="fas fa-sign-out-alt"></i>
@@ -122,13 +122,14 @@
         <script>
             $('#logout').click(function() {
                 Swal.fire({
-                    title: 'Do you want to log out?',
+                    title: '¿Quieres cerrar sesión?',
                     showCancelButton: true,
-                    confirmButtonText: 'Yes!'
+                    confirmButtonText: '¡Si!',
+                    cancelButtonText: 'Cancelar'
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                        Swal.fire('Closed session!', '', 'success')
+                        Swal.fire('¡Sesión cerrada!', '', 'success')
                         $.post('<?= base_url('login/logout') ?>')
                         setTimeout(function() {
                             location.reload();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in (v2)</title>
+    <title>ICS | Iniciar sesión</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,12 +21,12 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a class="h1"><b>Admin</b>ICS</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Regístrese para iniciar su sesión</p>
 
-                <form action="../../index3.html" method="post">
+                <form>
                     <div class="input-group mb-3">
                         <input name="username" type="text" class="form-control" placeholder="Username">
                         <div class="input-group-append">
@@ -44,11 +44,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
-                            <a id="submit" class="btn btn-primary btn-block">Sign In</a>
+                        <div class="col-5">
+                            <a id="submit" class="btn btn-primary btn-block">Iniciar sesión</a>
                         </div>
                         <!-- /.col -->
                     </div>

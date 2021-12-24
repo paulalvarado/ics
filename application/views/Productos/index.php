@@ -16,11 +16,27 @@
             <tbody>
                 <?php foreach ($productos as $key => $p) : ?>
                     <tr data-item='<?= json_encode($p) ?>'>
-                        <td><?= $p->producto ?></td>
+                        <td class="tooltip-<?= $p->id_producto ?>" data-toggle="tooltip" data-placement="auto" data-html="true" title="<b><a class='text-white' href='<?= base_url('productos/edit') . '/' . $p->id_producto ?>'>Editar</a></b>"><?= $p->producto ?></td>
                         <td><?= $p->descripcion ?></td>
                         <td><?= $p->sku ?></td>
                         <td><?= $p->stock ?></td>
                     </tr>
+                    <script>
+                        $('.tooltip-<?= $p->id_producto ?>').tooltip({
+                            customClass: 'tooltip-show-<?= $p->id_producto ?>',
+                            trigger: 'focus',
+                            delay: { "show": 0, "hide": 0 }
+                        })
+                        $('.tooltip-<?= $p->id_producto ?>').click(function() {
+                            $('.tooltip-show-<?= $p->id_producto ?>').css({
+                                top: checkCursorY(),
+                                left: checkCursorX(),
+                                transform: 'translate3d(-20px, -20px, -10px)',
+                                transition: '.2s'
+                            })
+                            console.log(checkCursorX() + checkCursorY())
+                        })
+                    </script>
                 <?php endforeach ?>
             </tbody>
             <tfoot>
@@ -81,4 +97,18 @@
             })
         })
     });
+    
+    var cursorX;
+        var cursorY;
+        document.onmousemove = function(e) {
+            cursorX = e.pageX;
+            cursorY = e.pageY;
+        }
+
+        function checkCursorX() {
+            return cursorX
+        }
+        function checkCursorY() {
+            return cursorY
+        }
 </script>
