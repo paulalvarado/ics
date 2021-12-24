@@ -8,28 +8,78 @@ class Productos extends CI_Controller
   {
     parent::__construct();
     $this->load->model('Productos_model');
+    if (!isset($this->session->username)) {
+      redirect(base_url('login'));
+    }
   }
 
   public function index()
   {
-    $data['page'] = 'productos/index';
-    $data['titulo'] = 'Products';
-    $data['breadcrumbs'] = ['Home', 'Dashboard', 'Products'];
+    $data['page'] = 'Productos/index';
+    $data['titulo'] = 'Productos';
+    $data['breadcrumbs'] = [
+      [
+        'name'  =>  'Inicio',
+        'url'   => base_url()
+      ], [
+        'name'    => 'Tablero',
+        'url'   => base_url('dashboard')
+      ], [
+        'name'    => 'Todos los productos',
+        'url'   => base_url('productos')
+      ]
+    ];
     $data['btn']  = [
       [
-        'titulo' => 'Add products',
-        'id' => 'add-product'
+        'titulo' => 'Añadir producto',
+        'id' => 'add-product',
+        'url' => base_url('productos/add')
       ],
       [
-        'titulo' => 'Import products',
-        'id' => 'import-product'
+        'titulo' => 'Importar productos',
+        'id' => 'import-product',
+        'url' => base_url('productos/add#import')
       ]
     ];
 
     $data['productos'] = $this->Productos_model->all();
 
     if (isset($this->session->username)) {
-      $this->load->view('template/content', $data);
+      $this->load->view('Template/content', $data);
+    } else {
+      redirect(base_url('login'));
+    }
+  }
+
+  public function add()
+  {
+    $data['page'] = 'Productos/add';
+    $data['titulo'] = 'Añadir poducto';
+    $data['breadcrumbs'] = [
+      [
+        'name'  =>  'Inicio',
+        'url'   => base_url()
+      ], [
+        'name'    => 'Tablero',
+        'url'   => base_url('dashboard')
+      ], [
+        'name'    => 'Productos',
+        'url'   => base_url('productos')
+      ], [
+        'name'    => 'Añadir producto',
+        'url'   => base_url('productos/add')
+      ]
+    ];
+    $data['btn']  = [
+      [
+        'titulo' => 'Importar productos',
+        'id' => 'import-product',
+        'url' => base_url('productos/add#import')
+      ]
+    ];
+
+    if (isset($this->session->username)) {
+      $this->load->view('Template/content', $data);
     } else {
       redirect(base_url('login'));
     }
@@ -40,11 +90,10 @@ class Productos extends CI_Controller
     $datos['producto']        = $_POST['name'];
     $datos['sku']         = $_POST['sku'];
     $datos['stock']       = $_POST['stock'];
-    $datos['cantidad']    = $_POST['cantidad'];
     $datos['stock_min']    = $_POST['stockmin'];
     $datos['descripcion'] = $_POST['description'];
 
-    $this->Productos_model->guardar($datos);
+    return $this->Productos_model->guardar($datos);
   }
 }
 

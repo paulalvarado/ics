@@ -1,16 +1,15 @@
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">DataTable with default features</h3>
+        <h3 class="card-title">Todos los productos</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
                     <th>SKU</th>
-                    <th>Amount</th>
                     <th>Stock</th>
                 </tr>
             </thead>
@@ -20,17 +19,15 @@
                         <td><?= $p->producto ?></td>
                         <td><?= $p->descripcion ?></td>
                         <td><?= $p->sku ?></td>
-                        <td><?= $p->cantidad ?></td>
                         <td><?= $p->stock ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
                     <th>SKU</th>
-                    <th>Amount</th>
                     <th>Stock</th>
                 </tr>
             </tfoot>
@@ -64,14 +61,24 @@
             "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+
+        $('.submit-form-add-product').click(function() {
+            $.post(url + 'productos/guardar', {
+                name: $('#form-add-product input[name="producto"]').val(),
+                sku: $('#form-add-product input[name="sku"]').val(),
+                stock: $('#form-add-product input[name="stock"]').val(),
+                stockmin: $('#form-add-product input[name="stockmin"]').val(),
+                description: $('#form-add-product textarea[name="description"]').val(),
+            }).done(function(data) {
+                Swal.fire(
+                    'Product successfully saved!',
+                    data,
+                    'success'
+                )
+                setTimeout(function() {
+                    location.reload()
+                }, 3000)
+            })
+        })
     });
 </script>

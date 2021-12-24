@@ -35,25 +35,25 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item"><!-- menu-open -->
-                    <a href="#" class="nav-link"><!-- active -->
+                <li class="nav-item <?= ($page == 'productos/add' || $page == 'productos/index') ? 'menu-open' : '' ?>"><!-- menu-open -->
+                    <a href="#" class="nav-link <?= ($page == 'productos/add' || $page == 'productos/index') ? 'active' : '' ?>"><!-- active -->
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
-                            Products
+                            Productos
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('productos') ?>" class="nav-link"><!-- active -->
+                            <a href="<?= base_url('productos') ?>" class="nav-link <?= ($page == 'productos/index') ? 'active' : '' ?>"><!-- active -->
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>All products</p>
+                                <p>Todos los productos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('productos/editar') ?>" class="nav-link">
+                            <a href="<?= base_url('productos/add') ?>" class="nav-link <?= ($page == 'productos/add') ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add product</p>
+                                <p>Añadir producto</p>
                             </a>
                         </li>
                     </ul>
@@ -64,3 +64,8 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+<script>
+    $(document).ready(function(){
+
+    })
+</script>

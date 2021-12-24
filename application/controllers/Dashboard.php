@@ -25,17 +25,28 @@ class Dashboard extends CI_Controller
   {
     parent::__construct();
     $this->load->model('Productos_model');
+    if (!isset($this->session->username)) {
+      redirect(base_url('login'));
+    }
   }
 
   public function index()
   {
-    $data['page'] = 'dashboard/index';
-    $data['titulo'] = 'Dashboard';
-    $data['breadcrumbs'] = ['Home','Dashboard'];
+    $data['page'] = 'Dashboard/index';
+    $data['titulo'] = 'Tablero';
+    $data['breadcrumbs'] = [
+      [
+        'name'  =>  'Inicio',
+        'url'   => base_url()
+      ], [
+        'name'    => 'Tablero',
+        'url'   => base_url('dashboard')
+      ]
+    ];
     $data['productos'] = $this->Productos_model->all();
 
     if (isset($this->session->username)) {
-      $this->load->view('template/content', $data);
+      $this->load->view('Template/content', $data);
     }else{
       redirect(base_url('login'));
     }
