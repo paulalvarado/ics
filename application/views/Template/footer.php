@@ -16,6 +16,8 @@
     <!-- ./wrapper -->
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url() ?>assets/dist/js/demo.js"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/style.css">
 </body>
 
 </html>

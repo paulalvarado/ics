@@ -126,6 +126,7 @@ class Productos extends CI_Controller
     $datos['producto']    = $_POST['name'];
     $datos['sku']         = $_POST['sku'];
     $datos['stock']       = $_POST['stock'];
+    $datos['precio']       = $_POST['precio'];
     $datos['stock_min']   = $_POST['stockmin'];
     $datos['descripcion'] = $_POST['description'];
 
@@ -134,6 +135,13 @@ class Productos extends CI_Controller
     }
     
     return $this->Productos_model->guardar($datos);
+  }
+
+  public function vender(){
+    $data['id_producto']     = $_POST['id_producto'];
+    $data['precio']          = $_POST['precio'];
+    $data['fecha']           = date("Y-m-d H:i:s");
+    return $this->Productos_model->vender($data);
   }
 }
 

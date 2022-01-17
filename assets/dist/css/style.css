@@ -1,0 +1,41 @@
+.dark-mode .select2-selection {
+    background-color: #343a40;
+    border-color: #6c757d;
+}
+
+.dark-mode .select2-selection--single {
+    background-color: #343a40;
+    border-color: #6c757d;
+}
+
+.dark-mode .select2-selection--single .select2-selection__rendered {
+    color: #fff;
+}
+
+.dark-mode .select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
+    background-color: #3f6791;
+    color: #fff;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: calc(2.25rem + 2px);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    width: 20px;
+    transform: translateY(-50%);
+}
+
+body.swal2-height-auto {
+    height: 100vh!important;
+}

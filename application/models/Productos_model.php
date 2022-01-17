@@ -52,6 +52,40 @@ class Productos_model extends CI_Model
     return $this->db->affected_rows();
   }
 
+  public function vender($data){
+    $this->db->insert('ventas', $data);
+  }
+
+  /*public function last_ranking(){
+    $d = strtotime("-1 week -1 day");
+    $start_week = strtotime("last sunday midnight", $d);
+    $end_week = strtotime("next saturday", $d);
+    $start = date("Y-m-d", $start_week);
+    $end = date("Y-m-d", $end_week);
+    
+    return $this->db->query("SELECT v.id_venta, v.id_producto, COUNT(v.id_producto) AS ventas, p.producto, v.fecha, v.precio AS precio_regular, SUM(v.precio) as total FROM ventas v INNER JOIN productos p ON v.id_producto = p.id_producto WHERE fecha BETWEEN '$start' AND '$end' GROUP BY id_producto ORDER BY `ventas` DESC LIMIT 4;")->result();
+  }
+
+  public function last_ranking_id($id){
+    $d = strtotime("-1 week -1 day");
+    $start_week = strtotime("last sunday midnight", $d);
+    $end_week = strtotime("next saturday", $d);
+    $start = date("Y-m-d", $start_week);
+    $end = date("Y-m-d", $end_week);
+    
+    return $this->db->query("SELECT v.id_venta, v.id_producto, COUNT(v.id_producto) AS ventas, p.producto, v.fecha, v.precio AS precio_regular, SUM(v.precio) as total FROM ventas v INNER JOIN productos p ON v.id_producto = p.id_producto WHERE (fecha BETWEEN '$start' AND '$end') AND v.id_producto = $id GROUP BY id_producto ORDER BY `ventas` DESC LIMIT 4;")->row();
+  }
+
+  public function ranking(){
+    $d = strtotime("today");
+    $start_week = strtotime("last sunday midnight", $d);
+    $end_week = strtotime("next saturday", $d);
+    $start = date("Y-m-d", $start_week);
+    $end = date("Y-m-d", $end_week);
+    $this->db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+    return $this->db->query("SELECT v.id_venta, v.id_producto, COUNT(v.id_producto) AS ventas, p.producto, v.fecha, v.precio AS precio_regular, SUM(v.precio) as total FROM ventas v INNER JOIN productos p ON v.id_producto = p.id_producto WHERE fecha BETWEEN '$start' AND '$end' GROUP BY id_producto ORDER BY `ventas` DESC LIMIT 4;")->result();
+  }*/
+
   // ------------------------------------------------------------------------
 
 }

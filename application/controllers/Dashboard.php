@@ -43,6 +43,24 @@ class Dashboard extends CI_Controller
         'url'   => base_url('dashboard')
       ]
     ];
+
+    /*$rank = $this->Productos_model->ranking();
+    $rank_result = [];
+    $array = [];
+    foreach ($rank as $key => $value) {
+      $last_sold = $this->Productos_model->last_ranking_id($value->id_producto);
+      $rank_result['id_venta']          = $value->id_venta;
+      $rank_result['id_producto']       = $value->id_producto;
+      $rank_result['ventas']            = $value->ventas;
+      $rank_result['porcentaje']        = (100 * $value->ventas) / $last_sold->ventas - (100);
+      $rank_result['producto']          = $value->producto;
+      $rank_result['fecha']             = $value->fecha;
+      $rank_result['precio_regular']    = $value->precio_regular;
+      $rank_result['total']             = $value->total;
+      $array[] = $rank_result;
+    }
+    $data['ranking']  = $array;
+    $data['last_ranking']  = $this->Productos_model->last_ranking();*/
     $data['productos'] = $this->Productos_model->all();
 
     if (isset($this->session->username)) {
@@ -50,6 +68,29 @@ class Dashboard extends CI_Controller
     }else{
       redirect(base_url('login'));
     }
+  }
+
+  public function ranking(){
+    $rank = $this->Productos_model->ranking();
+    $rank_result = [];
+    $array = [];
+    foreach ($rank as $key => $value) {
+      $last_sold = $this->Productos_model->last_ranking_id($value->id_producto);
+      $rank_result['id_venta']          = $value->id_venta;
+      $rank_result['id_producto']       = $value->id_producto;
+      $rank_result['ventas']            = $value->ventas . ' - ' . $last_sold->ventas;
+      $rank_result['porcentaje']        = (100 * $value->ventas) / $last_sold->ventas - (100);
+      $rank_result['producto']          = $value->producto;
+      $rank_result['fecha']             = $value->fecha;
+      $rank_result['precio_regular']    = $value->precio_regular;
+      $rank_result['total']             = $value->total;
+      $array[] = $rank_result;
+    }
+    
+    echo "<pre>";
+    print_r($array);
+    // print_r($this->Productos_model->ranking());
+    echo "</pre>";
   }
 
 }

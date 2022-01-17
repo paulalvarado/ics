@@ -1,23 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
-/**
- *
- * Controller Login
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller CI
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @author    Raul Guerrero <r.g.c@me.com>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Login extends CI_Controller
 {
 
@@ -30,9 +13,9 @@ class Login extends CI_Controller
   public function index()
   {
     if (!isset($this->session->username)) {
-      $this->load->view('login/login');
+      $this->load->view('Login/login');
     }else{
-      redirect(base_url('dashboard'));
+      redirect(base_url('Dashboard'));
     }
   }
 

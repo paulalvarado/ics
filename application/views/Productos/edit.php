@@ -32,7 +32,7 @@
                     ¡Listo!
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="stock" class="form-label">Stock</label>
                 <input value="<?= $producto->stock ?>" type="number" class="form-control" id="stock" name="stock" required>
                 <div class="valid-feedback">
@@ -42,7 +42,18 @@
                     Proporcione una cantidad al producto.
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <label for="precio" class="form-label">Precio</label>
+                <input value="<?= $producto->precio ?>" type="number" class="form-control" id="precio" name="precio" required
+                placeholder="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$">
+                <div class="valid-feedback">
+                    ¡Listo!
+                </div>
+                <div class="invalid-feedback">
+                    Proporcione el precio del producto.
+                </div>
+            </div>
+            <div class="col-md-4">
                 <label for="stockmin" class="form-label">Cantidad mínima</label>
                 <input value="<?= $producto->stock_min ?>" type="number" class="form-control" id="stockmin" name="stockmin" required>
                 <div class="valid-feedback">
@@ -87,6 +98,7 @@
                     name: $('#form-add-product input[name="producto"]').val(),
                     sku: $('#form-add-product input[name="sku"]').val(),
                     stock: $('#form-add-product input[name="stock"]').val(),
+                    precio: $('#form-add-product input[name="precio"]').val(),
                     stockmin: $('#form-add-product input[name="stockmin"]').val(),
                     description: $('#form-add-product textarea[name="description"]').val(),
                 }).done(function(data) {
@@ -112,6 +124,7 @@
                     name: $('#form-add-product input[name="producto"]').val(),
                     sku: $('#form-add-product input[name="sku"]').val(),
                     stock: $('#form-add-product input[name="stock"]').val(),
+                    precio: $('#form-add-product input[name="precio"]').val(),
                     stockmin: $('#form-add-product input[name="stockmin"]').val(),
                     description: $('#form-add-product textarea[name="description"]').val(),
                 }).done(function(data) {

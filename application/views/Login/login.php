@@ -68,6 +68,8 @@
     <script src="<?= base_url() ?>assets/dist/js/adminlte.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/style.css">
     <script>
         $(document).ready(function() {
             $('#submit').click(function() {
